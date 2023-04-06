@@ -8,6 +8,7 @@
       <th scope="col">ID</th>
       <th scope="col">Imie</th>
       <th scope="col">Nazwisko</th>
+      <th scope="col">E-mail</th>
       <th scope="col">Akcje</th>
     </tr>
   </thead>
@@ -15,9 +16,9 @@
     @foreach ($users as $user)
     <tr>
       <th scope="row">{{$user->id}}</th>
-      <td>{{$user->email}}</td>
       <td>{{$user->name}}</td>
-      <td></td>
+      <td>{{$user->surname}}</td>
+      <td>{{$user->email}}</td>
       <td></td>
     </tr>
 @endforeach

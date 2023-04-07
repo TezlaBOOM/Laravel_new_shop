@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/users/list',[UserController::class,'index'])->middleware('auth');
+Route::delete('/users/list/{id}',[UserController::class,'destroy'])->middleware('auth');
 Route::get('/hello',[HelloWorldController::class,'show']);
 Auth::routes();
 

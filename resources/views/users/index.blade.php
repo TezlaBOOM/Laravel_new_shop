@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container">
 <table class="table">
   <thead>
@@ -35,6 +36,7 @@
 $(function(){
   $('.delete').click(function() {
           $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         method: "DELETE",
         url: "http://sklep.test/users/list/" + $(this).data("id"),
         //data: { id: $(this).data("id") }

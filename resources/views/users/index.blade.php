@@ -33,20 +33,6 @@
 </div>
 @endsection
 @section('javascript')
-$(function(){
-  $('.delete').click(function() {
-          $.ajax({
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        method: "DELETE",
-        url: "http://sklep.test/users/list/" + $(this).data("id"),
-        //data: { id: $(this).data("id") }
-      })
-        .done(function( msg ) {
-          window.location.reload();
-        })
-        .fail(function(response) {
-          alert( "ERROR");
-        });
-   });
-});
+@endsection
+@section('js-files')
 @endsection

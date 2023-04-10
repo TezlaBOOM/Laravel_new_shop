@@ -13,7 +13,7 @@ $(function(){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                 method: "DELETE",
-                url: "http://sklep.test/users/list/" + $(this).data("id"),
+                url: deleteURL + $(this).data("id"),
                 data: { id: $(this).data("id") }
               })
               .done(function( data) {

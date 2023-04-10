@@ -33,6 +33,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product($request->all());
+        $product->image_path = $request->file("image")->store('products');
         $product -> save();
         return redirect(route('products.index'));
     }
@@ -42,15 +43,20 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view("products.show",[
+            'product'=> $product
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
+     * 
      */
-    public function edit(Product $product)
+    public function edit(Product $product) 
     {
-        //
+        return view('products.edit',[
+            'product'=> $product
+        ]);
     }
 
     /**
@@ -58,7 +64,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->fill($request->all());
+        $product->save();
+        return redirect(route('products.index'));
     }
 
     /**
@@ -66,6 +74,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
-    }
+        try{
+            $id = $product->id;
+            Product::find($id)->delete($id);       
+            return response()->json([    
+                'success' => 'Record deleted successfully!'
+                ]);
+            } catch(Exception $e){
+               return response()->json([    
+                'error' => 'Error!'
+                ]);
+            }
+     }
 }

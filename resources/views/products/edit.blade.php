@@ -5,17 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dodawnie produk</div>
+                <div class="card-header">Edytuj produk</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('products.update', $product->id) }}">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nazwa') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text"maxlenght="500" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text"maxlenght="500" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $product->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Opis') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" type="text" maxlenght="1500" class="form-control @error('description') is-invalid @enderror" name="description" autofocus>{{old('description')}}</textarea>
+                                <textarea id="description" type="text" maxlenght="1500" class="form-control @error('description') is-invalid @enderror" name="description" autofocus>{{$product->description}}</textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             <label for="amount" class="col-md-4 col-form-label text-md-end">{{ __('Ilość') }}</label>
 
                             <div class="col-md-6">
-                                <input id="amount" type="number" min="0" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required autocomplete="amount" autofocus>
+                                <input id="amount" type="number" min="0" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ $product->amount }}" required autocomplete="amount" autofocus>
 
                                 @error('amount')
                                     <span class="invalid-feedback" role="alert">
@@ -57,22 +57,13 @@
                             <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Cena') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number" step="0.01" min="0" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+                                <input id="price" type="number" step="0.01" min="0" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $product->price }}" required autocomplete="price" autofocus>
 
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-
-                        
-                        <div class="row mb-3">
-                            <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Obrazek') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="image" type="file" class="form-control" name="image">
                             </div>
                         </div>
 

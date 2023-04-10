@@ -34,6 +34,7 @@
 </div>
 @endsection
 @section('javascript')
+const deleteURL = "{{url('users/list')}}/";
 @endsection
 @section('js-files')
 @endsection

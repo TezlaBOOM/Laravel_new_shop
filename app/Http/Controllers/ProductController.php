@@ -65,6 +65,9 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->fill($request->all());
+        if($request->hasFile('image')){
+            $product->image_path = $request->file("image")->store('products');
+        }
         $product->save();
         return redirect(route('products.index'));
     }

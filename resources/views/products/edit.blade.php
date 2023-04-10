@@ -8,7 +8,7 @@
                 <div class="card-header">Edytuj produk</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('products.update', $product->id) }}">
+                    <form method="POST" action="{{ route('products.update', $product->id) }}"" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -64,6 +64,21 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Obrazek') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control" name="image">
+                            </div>
+                        </div>
+
+                        <div class="row justifly-content-center">
+
+                            <div class="col-md-6">
+                                <img src="{{asset('storage/' . $product->image_path)}}" alt="Zdjęcie produktu">
                             </div>
                         </div>
 

@@ -71,14 +71,21 @@
                             <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Obrazek') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control" name="image">
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row justifly-content-center">
 
                             <div class="col-md-6">
-                                <img src="{{asset('storage/' . $product->image_path)}}" alt="Zdjęcie produktu">
+                               @if(!is_null($product->image_path)) 
+                                    <img src="{{asset('storage/' . $product->image_path)}}" alt="Zdjęcie produktu">
+                                @endif
                             </div>
                         </div>
 

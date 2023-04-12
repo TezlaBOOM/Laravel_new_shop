@@ -22,6 +22,7 @@
         <th scope="col">{{__('sklep.product.fileds.description')}}</th>
         <th scope="col">{{__('sklep.product.fileds.amount')}}</th>
         <th scope="col">{{__('sklep.product.fileds.price')}}</th>
+        <th scope="col">{{__('sklep.columns.fileds.category')}}</th>
         <th scope="col">{{__('sklep.columns.actions')}}</th>
       </tr>
     </thead>
@@ -33,6 +34,7 @@
         <td>{{$product->description}}</td>
         <td>{{$product->amount}}</td>
         <td>{{$product->price}}</td>
+        <td>@if(!is_null($product->category)){{$product->category->name}}@endif</td>
         <td>
         <a href="{{route('products.show', $product->id)}}">
             <button class="btn btn-primary btn-sm" > P </button>

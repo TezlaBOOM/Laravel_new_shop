@@ -44,6 +44,20 @@
 
                             </div>
                         </div>
+                        
+                        <div class="row mb-3">
+                            <label for="category" class="col-md-4 col-form-label text-md-end">{{__('sklep.product.fileds.category')}}</label>
+
+                            <div class="col-md-6">
+                                <select id="category" class="form-control @error('category') is-invalid @enderror" name="category_id">
+                                    @if(!is_null($product->category))
+                                        <option>{{$product->category->name}}</option>
+                                    @else
+                                        <option value="">brak</option>
+                                    @endif                    
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="row justifly-content-center">
 

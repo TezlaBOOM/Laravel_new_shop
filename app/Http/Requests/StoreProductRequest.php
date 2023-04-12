@@ -29,4 +29,16 @@ class StoreProductRequest extends FormRequest
             'image' =>'required|image|mimes:jpg,png'
         ];
     }
+    // public function messages()
+    // {
+    //     return[
+    //         'name' =>'Jest wymagane pole :attribute!'
+    //     ];
+    // }
+    // public function attributes()
+    // {
+    //     return[
+    //         'name' =>'nazwa'
+    //     ];
+    // }
 }

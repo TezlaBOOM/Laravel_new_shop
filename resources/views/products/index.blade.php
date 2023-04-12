@@ -5,11 +5,11 @@
 <div class="container">
 <div class="row">
   <div class="col-6">
-    <h1>Lista produktów</h1>
+    <h1>{{__('sklep.product.index_title')}}</h1>
   </div>
   <div class="col-6">
     <a class="float-right" href="{{ route('products.create') }}">
-      <button type="button" class="btn btn-primary">Dodaj produkt</button>
+      <button type="button" class="btn btn-primary">{{__('sklep.button.add_product')}}</button>
     </a>
 
 </div>
@@ -18,11 +18,11 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Nazwa</th>
-        <th scope="col">Opis</th>
-        <th scope="col">Ilość</th>
-        <th scope="col">Cena</th>
-        <th scope="col">Akcje</th>
+        <th scope="col">{{__('sklep.product.fileds.name')}}</th>
+        <th scope="col">{{__('sklep.product.fileds.description')}}</th>
+        <th scope="col">{{__('sklep.product.fileds.amount')}}</th>
+        <th scope="col">{{__('sklep.product.fileds.price')}}</th>
+        <th scope="col">{{__('sklep.columns.actions')}}</th>
       </tr>
     </thead>
     <tbody>
@@ -54,7 +54,8 @@
 </div>
 @endsection
 @section('javascript')
-const deleteURL = "{{url('products')}}/";
+  const deleteURL = "{{url('products')}}/";
+  const confirmDelete = "{{__('sklep.messages.delete_confirm')}}";
 @endsection
 @section('js-files')
 @endsection

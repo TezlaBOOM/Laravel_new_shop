@@ -2,7 +2,7 @@ $(function(){
     console.log('chujokurwachuj');
     $('.delete').click(function() {
       Swal.fire({
-        title:'Czy na pewno chcesz usunąć rekord?',
+        title:confirmDelete,
         icon:'warning',
         showCancelButton:'true',
         confirmButtonText:'Tak',

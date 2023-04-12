@@ -7,10 +7,11 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Imie</th>
-      <th scope="col">Nazwisko</th>
-      <th scope="col">E-mail</th>
-      <th scope="col">Akcje</th>
+      <th scope="col">{{ __('Name') }}</th>
+      <th scope="col">{{ __('Surname') }}</th>
+      <th scope="col">{{ __('Email') }}</th>
+      <th scope="col">{{ __('Phone Number') }}</th>
+      <th scope="col">{{ __('Action') }}</th>
     </tr>
   </thead>
   <tbody>
@@ -35,6 +36,7 @@
 @endsection
 @section('javascript')
 const deleteURL = "{{url('users/list')}}/";
+const confirmDelete = "{{__('sklep.messages.delete_confirm')}}";
 @endsection
 @section('js-files')
 @endsection

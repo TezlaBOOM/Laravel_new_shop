@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edytuj produk</div>
+                <div class="card-header">{{__('sklep.product.edit_title',['name'=>$product->name]) }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('products.update', $product->id) }}"" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nazwa') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{__('sklep.product.fileds.name')}}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text"maxlenght="500" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $product->name }}" required autocomplete="name" autofocus>
@@ -26,10 +26,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Opis') }}</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-end">{{__('sklep.product.fileds.description')}}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" type="text" maxlenght="1500" class="form-control @error('description') is-invalid @enderror" name="description" autofocus>{{$product->description}}</textarea>
+                                <textarea id="description" type="text" maxlenght="1500" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{$product->description}}</textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="amount" class="col-md-4 col-form-label text-md-end">{{ __('Ilość') }}</label>
+                            <label for="amount" class="col-md-4 col-form-label text-md-end">{{__('sklep.product.fileds.amount')}}</label>
 
                             <div class="col-md-6">
                                 <input id="amount" type="number" min="0" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ $product->amount }}" required autocomplete="amount" autofocus>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Cena') }}</label>
+                            <label for="price" class="col-md-4 col-form-label text-md-end">{{__('sklep.product.fileds.price')}}</label>
 
                             <div class="col-md-6">
                                 <input id="price" type="number" step="0.01" min="0" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $product->price }}" required autocomplete="price" autofocus>

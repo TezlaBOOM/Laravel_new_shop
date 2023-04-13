@@ -1,5 +1,11 @@
 <?php
 return[
+    'welcome' =>[
+        'products'=> 'Produkty',
+        'categories'=> 'Kategorie',
+        'price'=>'Cena',
+        'filter'=>'filtruj'
+    ],
     'columns' =>[
         'actions'=>'Akcje'
     ],

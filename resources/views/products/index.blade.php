@@ -34,7 +34,7 @@
         <td>{{$product->description}}</td>
         <td>{{$product->amount}}</td>
         <td>{{$product->price}}</td>
-        <td>@if(!is_null($product->category)){{$product->category->name}}@endif</td>
+        <td>@if(!is_null($product->category)) {{$product->category->name}} @endif</td>
         <td>
         <a href="{{route('products.show', $product->id)}}">
             <button class="btn btn-primary btn-sm" > P </button>

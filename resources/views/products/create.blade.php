@@ -72,7 +72,7 @@
 
                             <div class="col-md-6">
                                 <select id="category" class="form-control @error('category') is-invalid @enderror" name="category_id"  required>
-                                    <option>brak</option>
+                                    <option value="">brak</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id}}">{{ $category->name }}</option>
                                     @endforeach

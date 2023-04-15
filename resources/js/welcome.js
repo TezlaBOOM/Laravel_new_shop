@@ -1,10 +1,22 @@
 $(function() {
-    $('a#filter_button').click(function() {
+    $('div.product-count a').click(function(event) {
+        event.preventDefault();
+        $('a.product-actual-count').text($(this).text());
+        getProducts($(this).text());
+    });
+
+
+    $('a#filter_button').click(function(event) {
+        event.preventDefault();
+        getProducts($('a.product-actual-count').text());
+    });
+
+    function getProducts(paginate){
         const form = $('form.sidebar-filter').serialize();
         $.ajax({
             method:"GET",
             url:"/",
-            data:form
+            data:form + "&" + $.param({paginate: paginate})
         })
         .done(function(response){
            $('div#products-wrapper').empty();
@@ -30,7 +42,9 @@ $(function() {
         .fail(function(date){
             alert("ERROR");
         });
-    });
+    }
+
+
     function getImage (product){
 
         if (!!product.image_path){

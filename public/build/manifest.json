@@ -5,9 +5,14 @@
     "src": "resources/js/app.js"
   },
   "resources/js/delete.js": {
-    "file": "assets/delete-768bf887.js",
+    "file": "assets/delete-1b9b749a.js",
     "isEntry": true,
     "src": "resources/js/delete.js"
+  },
+  "resources/js/welcome.js": {
+    "file": "assets/welcome-fabefb92.js",
+    "isEntry": true,
+    "src": "resources/js/welcome.js"
   },
   "resources/sass/app.scss": {
     "file": "assets/app-1ff323a7.css",

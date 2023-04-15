@@ -9,7 +9,7 @@
                       <div class="col-12">
                         <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
                           <label class="mr-2">Sort by:</label>
-                          <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
+                          <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
                             <a class="dropdown-item" href="#">Relevance</a>
                             <a class="dropdown-item" href="#">Price Descending</a>
@@ -23,12 +23,12 @@
                         </div>
                         <div class="dropdown float-right">
                           <label class="mr-2">View:</label>
-                          <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
+                          <a class="btn btn-lg btn-light dropdown-toggle product-actual-count" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">6 <span class="caret"></span></a>
+                          <div class="dropdown-menu dropdown-menu-right product-count" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
+                            <a class="dropdown-item" href="#">6</a>
                             <a class="dropdown-item" href="#">12</a>
+                            <a class="dropdown-item" href="#">18</a>
                             <a class="dropdown-item" href="#">24</a>
-                            <a class="dropdown-item" href="#">48</a>
-                            <a class="dropdown-item" href="#">96</a>
                           </div>
                         </div>
                       </div>
@@ -67,14 +67,14 @@
                           <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
                           <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                         </div>
-                        <div class="dropdown float-md-right">
+                        <div class="dropdown float-right">
                           <label class="mr-2">View:</label>
-                          <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">12 <span class="caret"></span></a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="btn btn-lg btn-light dropdown-toggle product-actual-count" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">6 <span class="caret"></span></a>
+                          <div class="dropdown-menu dropdown-menu-right product-count" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
                             <a class="dropdown-item" href="#">12</a>
+                            <a class="dropdown-item" href="#">18</a>
                             <a class="dropdown-item" href="#">24</a>
-                            <a class="dropdown-item" href="#">48</a>
-                            <a class="dropdown-item" href="#">96</a>
+                            <a class="dropdown-item" href="#">30</a>
                           </div>
                         </div>
                       </div>

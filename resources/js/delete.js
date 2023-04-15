@@ -1,5 +1,4 @@
 $(function(){
-    console.log('chujokurwachuj');
     $('.delete').click(function() {
       Swal.fire({
         title:confirmDelete,

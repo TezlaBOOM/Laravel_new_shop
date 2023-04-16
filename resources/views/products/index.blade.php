@@ -3,6 +3,7 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container">
+   @include('helpers.flash-messages')
 <div class="row">
   <div class="col-6">
     <h1>{{__('sklep.product.index_title')}}</h1>
@@ -22,7 +23,7 @@
         <th scope="col">{{__('sklep.product.fileds.description')}}</th>
         <th scope="col">{{__('sklep.product.fileds.amount')}}</th>
         <th scope="col">{{__('sklep.product.fileds.price')}}</th>
-        <th scope="col">{{__('sklep.columns.fileds.category')}}</th>
+        <th scope="col">{{__('sklep.product.fileds.category')}}</th>
         <th scope="col">{{__('sklep.columns.actions')}}</th>
       </tr>
     </thead>

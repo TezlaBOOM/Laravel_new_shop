@@ -7,6 +7,7 @@ return[
         'filter'=>'filtruj'
     ],
     'columns' =>[
+
         'actions'=>'Akcje'
     ],
     'messages'=>[
@@ -17,11 +18,36 @@ return[
         'add' =>'Dodaj',
         'add_product'=>'Dodaj produkt',
     ],
+    'users'=>[
+        'index_title' =>'Lista użytkowników',
+        'status'=>[
+            'store'=>[
+                'success'=>'Użytkowik zapisany',
+            ],
+            'update'=>[
+                'success'=>'Użytkowik zaktualizowany!'
+            ],
+            'delete'=>[
+                'success'=>'Użytkowik usunięty'
+            ],
+        ],
+    ],
     'product' =>[
         'add_title' =>'Dodawanie produktu',
         'edit_title' =>'Edycja produktu: :name',
         'show_title' =>'Podgląd produktu',
         'index_title' =>'Lista produktu',
+        'status'=>[
+            'store'=>[
+                'success'=>'Produkt zapisany',
+            ],
+            'update'=>[
+                'success'=>'Produkt zaktualizowany!'
+            ],
+            'delete'=>[
+                'success'=>'Produkt usunięty'
+            ],
+        ],
         'fileds' =>[
             'name' =>'Nazwa',
             'description' =>'Opis',
@@ -29,6 +55,6 @@ return[
             'price' =>'Cena',
             'image' =>'Grafika',
             'category'=>'Kategoria'
-        ]
-    ]
+        ],
+    ],
 ];

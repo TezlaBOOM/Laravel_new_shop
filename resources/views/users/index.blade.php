@@ -3,6 +3,12 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container">
+  @include('helpers.flash-messages')
+    <div class="row">
+        <div class="col-6">
+            <h1>{{__('sklep.users.index_title')}}</h1>
+        </div>
+    </div>
 <table class="table">
   <thead>
     <tr>

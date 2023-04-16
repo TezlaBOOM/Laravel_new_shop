@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -66,6 +67,7 @@ class UserController extends Controller
     {
        try{
         $user->delete();
+        Session::flash('status',__('sklep.users.status.delete.success'));
         return response()->json([
             'status' => 'success'
         ]);

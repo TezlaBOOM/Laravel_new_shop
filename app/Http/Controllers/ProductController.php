@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Exception;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Session;
 
 
 class ProductController extends Controller
@@ -39,7 +40,7 @@ class ProductController extends Controller
         $product = new Product($request->validated());
         $product->image_path = $request->file("image")->store('products');
         $product -> save();
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('status',__('sklep.product.status.store.success'));
     }
 
     /**
@@ -75,7 +76,7 @@ class ProductController extends Controller
             $product->image_path = $request->file("image")->store('products');
         }
         $product->save();
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('status',__('sklep.product.status.update.success'));
     }
 
     /**
@@ -86,6 +87,7 @@ class ProductController extends Controller
         try{
             $id = $product->id;
             Product::find($id)->delete($id);       
+            Session::flash('status',__('sklep.product.status.delete.success'));
             return response()->json([    
                 'success' => 'Record deleted successfully!'
                 ]);

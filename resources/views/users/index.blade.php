@@ -30,7 +30,7 @@
       <td>{{$user->phone_number}}</td>
       <td>
         <button class="btn btn-danger btn-sm delete" data-id="{{$user->id}}">
-          X
+        <i class="fa-solid fa-trash"></i>
         </button>
       </td>
     </tr>

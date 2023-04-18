@@ -38,13 +38,13 @@
         <td>@if(!is_null($product->category)) {{$product->category->name}} @endif</td>
         <td>
         <a href="{{route('products.show', $product->id)}}">
-            <button class="btn btn-primary btn-sm" > P </button>
+            <button class="btn btn-primary btn-sm" ><i class="fa-solid fa-camera"></i></button>
           </a>
           <a href="{{route('products.edit', $product->id)}}">
-            <button class="btn btn-success btn-sm" > E </button>
+            <button class="btn btn-success btn-sm" > <i class="fa-solid fa-pen-to-square"></i> </button>
           </a>
           <button class="btn btn-danger btn-sm delete" data-id="{{$product->id}}">
-            X
+          <i class="fa-solid fa-trash"></i>
           </button>
         </td>
       </tr>

@@ -2,9 +2,9 @@
 
 namespace App\Dtos\Cart;
 
-class CartDtos
+class CartDto
 {
-  private array $items = [];
+  private array $item = [];
   private float $totalSum = 0 ;
   private int $totalQuantity = 0 ;
 
@@ -12,18 +12,18 @@ class CartDtos
   /**
    * @return array
    */
-public function getItem(): array
+public function getItems(): array
 {
-    return $this->items;
+    return $this->item;
 }
 
 /**
  * 
  */
 
- public function setItems(array $items)
+ public function setItems(array $item)
  {
-    $this->items = $items;
+    $this->item = $item;
  }
 
  /**
@@ -59,10 +59,10 @@ public function setTotalQuantity(int $totalQuantity)
 {
     $this->totalQuantity = $totalQuantity;
 }
-public function incerementtotalQuantity(){
+public function incrementtotalQuantity(){
     $this->totalQuantity +=1;
 }
-public function incerementtotalSum(float $price){
+public function incrementtotalSum(float $price){
     $this->totalSum +=$price;
 }
 }

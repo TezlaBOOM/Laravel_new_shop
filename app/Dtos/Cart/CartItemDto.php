@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Dtos\Cart;
-class CartItemDtos
+class CartItemDto
 {
     private int $productId;
     private string $name;
     private float $price;
     private int $quantity;
-    private ?string $imagePath;
+    //private ?string $imagePath;
 
     public function getProductId(){
         return $this->productId;
@@ -33,12 +33,13 @@ class CartItemDtos
     public function setquantity(int $quantity){
         $this->quantity = $quantity;
     }
-    public function getimagePath(){
-        return $this->imagePath;
-    }
-    public function setimagePath(?string $imagePath){
-        $this->imagePath = $imagePath;
-    }
+   //public function getimagePath(){
+   //     return $this->imagePath;
+//}
+   // public function setimagePath(?string $imagePath){
+//$this->imagePath = $imagePath;
+   // }
+    
     public function incrementQuantity(){
         $this->quantity +=1;
     }

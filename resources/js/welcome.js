@@ -15,6 +15,7 @@ $(function() {
         event.preventDefault();
         $.ajax({
             metod:"POST",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }, 
             url: "cart/" + $(this).data('id'),
         })
         .done(function(response) {

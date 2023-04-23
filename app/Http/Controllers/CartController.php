@@ -8,8 +8,8 @@ use Illuminate\View\View;
 use Synfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
-use App\Dtos\Cart\CartDtos;
-use App\Dtos\Cart\CartItemDtos;
+use App\Dtos\Cart\CartDto;
+use App\Dtos\Cart\CartItemDto;
 
 class CartController extends Controller
 {
@@ -22,28 +22,29 @@ class CartController extends Controller
      */
     public function index()
     {
-        dd(Session::get('cart', new CartDtos()));
+        dd(Session::get('cart', new CartDto()));
         return view('home');
     }
+    
     public function store(Product $product)
     {
-        $cart=Session::get('cart', new CartDtos());
-        $item= $cart->getItem();
-        if(Arr::exists($item,$product->id)){
-            $item[$product->id] -> incrementQuantity();
+        $cart=Session::get('cart', new CartDto());
+        $item = $cart->getItems();
+        if(Arr::exists( $item, $product->id)){
+            $item[$product->id] -> incrementQuatity();
         }else{
-            $cartItemDtios = new CartItemDtos();
-            $cartItemDtios->setProductId($product->id);
-            $cartItemDtios->setName($product->name);
-            $cartItemDtios->setPrice($product->price);
-            $cartItemDtios->setImagePath($product->image_path);
-            $cartItemDtios->setQuantity(1);
-            $items[$product->id] = $cartItemDtios;
+            $cartItemDto = new CartItemDto();
+            $cartItemDto->setProductId($product->id);
+            $cartItemDto->setName($product->name);
+            $cartItemDto->setPrice($product->price);
+            //$cartItemDto->setImagePath($product->image_path);
+            $cartItemDto->setQuantity(1);
+            $item[$product->id] = $cartItemDto;
 
         }
         $cart->setItems($item);
-        $cart->incerementtotalQuantity();
-        $cart->incerementtotalSum($product->price);
+        $cart->incrementtotalQuantity();
+        $cart->incrementtotalSum($product->price);
         Session::put('cart',$cart);
        return response()->json([
             'status' => 'success'

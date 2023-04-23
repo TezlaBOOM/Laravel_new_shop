@@ -1,8 +1,22 @@
 {
+  "_axios-eb949378.js": {
+    "file": "assets/axios-eb949378.js"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-a7b5de11.js",
+    "file": "assets/app-c0ad4dc7.js",
+    "imports": [
+      "_axios-eb949378.js"
+    ],
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-2244d711.js",
+    "imports": [
+      "_axios-eb949378.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/bootstrap.js"
   },
   "resources/js/delete.js": {
     "file": "assets/delete-aa9be116.js",
@@ -10,7 +24,7 @@
     "src": "resources/js/delete.js"
   },
   "resources/js/welcome.js": {
-    "file": "assets/welcome-af7a7fd3.js",
+    "file": "assets/welcome-433e7910.js",
     "isEntry": true,
     "src": "resources/js/welcome.js"
   },

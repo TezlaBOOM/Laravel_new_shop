@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Exception;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductController extends Controller
@@ -71,8 +73,12 @@ class ProductController extends Controller
      */
     public function update(StoreProductRequest $request, Product $product)
     {
+        $oldImagePath = $product->image_path;
         $product->fill($request->validated());
         if($request->hasFile('image')){
+            if(Storage::disk('public')->exists($oldImagePath)){
+                Storage::disk('public')->delete($oldImagePath);
+            }
             $product->image_path = $request->file("image")->store('products');
         }
         $product->save();
@@ -97,4 +103,16 @@ class ProductController extends Controller
                 ]);
             }
      }
+
+
+public function downloadImage(Product $product)
+{
+    if(Storage::exists($product->image_path))
+        {
+            return Storage::download($product->image_path,$product->name . '-' . $product->id . '.jpg');
+         }
+
+    return Redirect::back();    
+}
+
 }

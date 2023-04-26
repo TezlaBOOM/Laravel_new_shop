@@ -16,9 +16,9 @@ $(function() {
         $.ajax({
             metod:"POST",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }, 
-            url: "cart/" + $(this).data('id'),
+            url: WELCOME_DATA.addToCart  + $(this).data('id'),
         })
-        .done(function(response) {
+        .done(function() {
             Swal.fire({
                 title:'Sukces',
                 text:'Produkt dodany do koszyka!',
@@ -30,7 +30,7 @@ $(function() {
                   if(result.isConfirmed){
                     
                     
-                   window.location = "cart";
+                    window.location = WELCOME_DATA.listCart;
                   }
               })
         })
@@ -61,15 +61,16 @@ $(function() {
                           '     <h5 class="card-price small">' +
                           '     <i>PLN' + product.price + '</i>' +
                           '     </h5>' +
-                          ' </div>' +
+                          '    </div>' +
+                          '     <button class="btn btn-success btn-sm add-cart-button"' + getDisabled() + ' data-id="' + product.id + '">' +
+                          '         <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
+                          '     </button>' +
                           ' </div>' +
                         '</div>';
                 $('div#products-wrapper').append(html);
            });
-        })
-        .fail(function(date){
-            alert("ERROR");
         });
+
     }
 
 
@@ -79,5 +80,11 @@ $(function() {
         return WELCOME_DATA.storagePath + product.image_path;
         }
         return WELCOME_DATA.defaultImage;
+    }
+    function getDisable(){
+        if(WELCOME_DATA.isGuest){
+            return'disabled';
+        }
+        return '';
     }
 });

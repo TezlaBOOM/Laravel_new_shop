@@ -113,11 +113,13 @@
   const WELCOME_DATA={
       storagePath: '{{asset('storage')}}/',
       defaultImage: '{{$defaultImage}}',
-      addToCart:'{{url('cart')}}/'
-      listCart:'{{url('cart')}}'
+      addToCart:'{{url('cart')}}/',
+      listCart:'{{url('cart')}}',
+      isGuest: '{{ $isGuest }}'
   }
 
 @endsection
 @section('js-files')
+    <script src="{{ asset("js/welcome.js") }}"></script>
 @endsection
 

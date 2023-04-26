@@ -23,7 +23,7 @@
                                      </div>
                                      <div class="col-md-2">
                                          <div class="cart_item_title">Quantity</div>
-                                         <div class="cart_item_text">{{$item->getQuantity()}}</div>
+                                         <div class="cart_item_text">{{ $item->getQuantity() }}</div>
                                      </div>
                                      <div class="col-md-2">
                                          <div class="cart_item_title">Price[PLN]</div>

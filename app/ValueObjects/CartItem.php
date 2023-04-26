@@ -8,7 +8,7 @@ class CartItem
     private string $name;
     private float $price;
     private int $quantity =0;
-    //private ?string $imagePath;
+    private ?string $imagePath;
 
     public function __construct(Product $product, int $quantity = 1)
    {
@@ -33,6 +33,12 @@ class CartItem
 
     public function getquantity(){
         return $this->productId;
+    }
+    public function getSum(){
+        return $this->price* $this->quantity;
+    }
+    public function getImage(){
+        return !is_null($this->imagePath)? asset("storage/".$this->imagePath):config("shop.defaultImage");
     }
 
     public function addQuantity(Product $product)

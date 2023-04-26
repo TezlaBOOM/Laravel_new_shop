@@ -114,6 +114,7 @@
       storagePath: '{{asset('storage')}}/',
       defaultImage: '{{$defaultImage}}',
       addToCart:'{{url('cart')}}/'
+      listCart:'{{url('cart')}}'
   }
 
 @endsection

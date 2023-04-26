@@ -27,8 +27,10 @@ $(function() {
                 confirmButtonText:'<i class ="fas fa-cart-plus"></i> Przejdź do koszyka',
                 cancelButtonText:'<i class="fas fa-shopping-bag"></i> Kontynuj zakupy'
               }).then((result)=>{
-                  if(result.value){
-                   alert('OK');
+                  if(result.isConfirmed){
+                    
+                    
+                   window.location = "cart";
                   }
               })
         })

@@ -16,6 +16,12 @@ public function getItems()
 {
     return $this->items;
 }
+public function getSum()
+{
+    return $this->items->sum(function($item){
+      return $item->getSum();
+    });
+}
 public function addItem(Product $product){
   $items = $this->items;
   $item = $items->first($this->isProductIdSameAsItemProduct($product));
@@ -27,6 +33,11 @@ public function addItem(Product $product){
     }
     $items->add($newItem);
   return new Cart($items);
+}
+public function removeItem(Product $product){
+  $items = $this->items->reject($this->isProductIdSameAsItemProduct($product));
+  return new Cart($items);
+
 }
 private function isProductIdSameAsItemProduct(Product $product)
 {

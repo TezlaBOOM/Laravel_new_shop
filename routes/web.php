@@ -26,8 +26,9 @@ Route::middleware(['auth','verified'])->group(function(){
 
     Route::middleware(['can:isAdmin'])->group(function(){
         Route::resource('products', App\Http\Controllers\ProductController::class);
-        Route::get('/users/list', [App\Http\Controllers\UserController::class, 'index']);
-        Route::delete('/users/list/{id}',[App\Http\Controllers\UserController::class,'destroy']);
+        Route::resource('users', App\Http\Controllers\UserController::class)->only([
+            'index', 'edit', 'update', 'destroy'
+        ]);
     });
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

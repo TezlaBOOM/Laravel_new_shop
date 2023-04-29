@@ -8,11 +8,11 @@
                 <div class="card-header">Edycja użytkownika: {{ $user->email }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('users.update', $user->id) }}">
+                    <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                         {{ method_field('PUT') }}
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="city" class="col-md-4 col-form-label text-md-right">Miasto</label>
 
                             <div class="col-md-6">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="zip_code" class="col-md-4 col-form-label text-md-right">Kod pocztowy</label>
 
                             <div class="col-md-6">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="street" class="col-md-4 col-form-label text-md-right">Ulica</label>
 
                             <div class="col-md-6">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="street_no" class="col-md-4 col-form-label text-md-right">Numer ulicy</label>
 
                             <div class="col-md-6">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="home_no" class="col-md-4 col-form-label text-md-right">Numer domu</label>
 
                             <div class="col-md-6">

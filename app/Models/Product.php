@@ -19,6 +19,14 @@ class Product extends Model
     ];
     public function category()
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->belongsTo(Order::class);
+    }
+    public function orders()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+    public function isSelectedCategory(int $category_id)
+    {
+        return $this->hasCategory() && $this->category->id == $category_id; 
     }
 }

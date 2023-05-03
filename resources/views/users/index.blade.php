@@ -15,8 +15,10 @@
       <th scope="col">ID</th>
       <th scope="col">{{ __('Name') }}</th>
       <th scope="col">{{ __('Surname') }}</th>
+      <th scope="col">{{ __('NIP') }}</th>
       <th scope="col">{{ __('Email') }}</th>
       <th scope="col">{{ __('Phone Number') }}</th>
+      <th scope="col">{{ __('Role') }}</th>
       <th scope="col">{{ __('Action') }}</th>
     </tr>
   </thead>
@@ -26,8 +28,10 @@
       <th scope="row">{{$user->id}}</th>
       <td>{{$user->name}}</td>
       <td>{{$user->surname}}</td>
+      <td>{{$user->NIP}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->phone_number}}</td>
+      <td>{{$user->role}}</td>
       <td>
           <a href="{{ route('users.edit', $user->id) }}">
              <button class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>

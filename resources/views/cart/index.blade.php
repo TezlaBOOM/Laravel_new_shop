@@ -63,7 +63,7 @@
     </div>
 @endsection
 @section('javascript')
-const deleteURL = "{{ url('cart') }}/";
+    const deleteURL = "{{ url('cart') }}/";
     const confirmDelete = "{{ __('shop.messages.delete_confirm') }}";
 @endsection
 @section('js-files')

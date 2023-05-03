@@ -1,1 +1,0 @@
-import{a as e}from"./axios-eb949378.js";window.axios=e;window.axios.defaults.headers.common["X-Requested-With"]="XMLHttpRequest";window.$=window.jQuery=require("jquery");window.$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}});

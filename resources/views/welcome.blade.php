@@ -17,10 +17,6 @@
                             <a class="dropdown-item" href="#">Best Selling</a>
                           </div>
                         </div>
-                        <div class="btn-group float-md-right ml-3">
-                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
-                        </div>
                         <div class="dropdown float-right">
                           <label class="mr-2">View:</label>
                           <a class="btn btn-lg btn-light dropdown-toggle product-actual-count" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">6<span class="caret"></span></a>
@@ -30,6 +26,11 @@
                             <a class="dropdown-item" href="#">18</a>
                             <a class="dropdown-item" href="#">24</a>
                           </div>
+                        
+                        <div class="btn-group float-md-right">
+                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
+                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -62,15 +63,13 @@
                       </div>
                       @endforeach
                     </div>
-                    <div class="row sorting mb-5 mt-5">
+                    <div class="row sorting mb-5 mt-5 dropdown float-right">
                       <div class="col-12">
-                        <a class="btn btn-light">
+                        <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
+                        <a class="btn btn-light ">
                           <i class="fas fa-arrow-up mr-2"></i> Back to top</a>
-                        <div class="btn-group float-md-right ml-3">
-                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
-                        </div>
-                        <div class="dropdown float-right">
+                          </div>
+                        <div>
                           <label class="mr-2">View:</label>
                           <a class="btn btn-lg btn-light dropdown-toggle product-actual-count" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">6<span class="caret"></span></a>
                           <div class="dropdown-menu dropdown-menu-right product-count" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
@@ -79,13 +78,17 @@
                             <a class="dropdown-item" href="#">24</a>
                             <a class="dropdown-item" href="#">30</a>
                           </div>
+                          <div class="btn-group float-md-right ml-3">
+                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
+                          <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
+                        </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <form class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
-                  <h3 class="mt-0 mb-5">{{__('sklep.welcome.products')}}<span class="text-primary">{{count($products)}}</span> produktów</h3>
+                  <h3 class="mt-0 mb-5">{{__('sklep.welcome.products')}}<span class="text-primary">: {{count($products)}}</span></h3>
                   <h6 class="text-uppercase font-weight-bold mb-3">{{__('sklep.welcome.categories')}}</h6>
                   @foreach($categories as $category)
                   <div class="mt-2 mb-2 pl-2">
@@ -96,7 +99,7 @@
                   </div>
                   @endforeach
                   <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-                  <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">{{__('sklep.welcome.price')}}<</h6>
+                  <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">{{__('sklep.welcome.price')}}</h6>
                   <div class="price-filter-control">
                     <input type="number" class="form-control w-50 pull-left mb-2" name="filter[price_min]" placeholder="50" id="price-min-control">
                     <input type="number" class="form-control w-50 pull-right" name="filter[price_max]" placeholder="150" id="price-max-control">
@@ -104,7 +107,7 @@
                   <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
                   <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
                   <a href="#" class="btn btn-lg btn-block btn-primary mt-5" id="filter_button">{{__('sklep.welcome.filter')}}</a>
-</form>
+                </form>
 
               </div>
             </div>

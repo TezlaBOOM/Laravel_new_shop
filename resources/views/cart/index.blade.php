@@ -50,6 +50,23 @@
                                         <div class="order_total_amount">{{ $cart->getSum() }}</div>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="row mb-3">
+                            <label for="category" class="col-md-4 col-form-label text-md-end">Metoda płatności:</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control @error('category') is-invalid @enderror" name="payment_category"  required>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id}}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category"')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                                 <div class="cart_buttons">
                                     <a href="/" class="button cart_button_clear">Wróć do sklepu</a>
                                     <button type="submit" class="button cart_button_checkout" {{ !$cart->hasItems() ? 'disabled' : '' }}>Zapłać</button>

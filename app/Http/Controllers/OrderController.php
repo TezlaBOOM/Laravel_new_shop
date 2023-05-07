@@ -12,6 +12,7 @@ use Devpark\Transfers24\Requests\Transfers24;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -34,7 +35,7 @@ class OrderController extends Controller
         ]);
     }
 
-    public function store(): RedirectResponse
+    public function store( Request $request)
     {
         $cart = Session::get('cart', new Cart());
         if ($cart->hasItems()) {
@@ -42,6 +43,7 @@ class OrderController extends Controller
             $order->quantity = $cart->getQuantity();
             $order->price = $cart->getSum();
             $order->user_id = Auth::id();
+            $order->payment_categories_id= $request->input('payment_category');
             $order->save();
             $productIds = $cart->getItems()->map(function ($item) {
                 return ['product_id' => $item->getProductId()];

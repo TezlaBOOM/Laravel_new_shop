@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Product;
+use App\Models\PaymentCategory;
 use Illuminate\View\View;
 use Synfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Support\Facades\Session;
@@ -24,7 +25,8 @@ class CartController extends Controller
     public function index()
     {
         return view('cart.index', [
-            'cart'=> Session::get('cart',new Cart())
+            'cart'=> Session::get('cart',new Cart()),
+            'categories' => PaymentCategory::all(),
         ]);
     }
     

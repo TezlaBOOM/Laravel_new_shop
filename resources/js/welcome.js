@@ -38,6 +38,12 @@ $(function() {
             Swal.fire('Oops...', 'Wystąpił błąd', 'error');
           }); 
     });
+    function getDisabled() {
+        if (WELCOME_DATA.isGuest) {
+            return ' disabled';
+        }
+        return '';
+    }
 
     function getProducts(paginate){
         const form = $('form.sidebar-filter').serialize();
@@ -62,29 +68,22 @@ $(function() {
                           '     <i>PLN' + product.price + '</i>' +
                           '     </h5>' +
                           '    </div>' +
-                          '     <button class="btn btn-success btn-sm add-cart-button"' + getDisabled() + ' data-id="' + product.id + '">' +
-                          '         <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
-                          '     </button>' +
-                          ' </div>' +
-                        '</div>';
-                $('div#products-wrapper').append(html);
-           });
-        });
+                          '                <button class="btn btn-success btn-sm add-cart-button"' + getDisabled() + ' data-id="' + product.id + '">' +
+                          '                   <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
+                          '                </button>' +
+                          '            </div>' +
+                          '        </div>';
+                      $('div#products-wrapper').append(html);
+                  });
+              });
+          }
+      
+          function getImage(product) {
+              if (!!product.image_path) {
+                  return WELCOME_DATA.storagePath + product.image_path;
+              }
+              return WELCOME_DATA.defaultImage;
+          }
+      
 
-    }
-
-
-    function getImage (product){
-
-        if (!!product.image_path){
-        return WELCOME_DATA.storagePath + product.image_path;
-        }
-        return WELCOME_DATA.defaultImage;
-    }
-    function getDisable(){
-        if(WELCOME_DATA.isGuest){
-            return'disabled';
-        }
-        return '';
-    }
-});
+      });

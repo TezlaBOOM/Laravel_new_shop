@@ -43,9 +43,12 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
 
+
+
    
 });
-
+Route::get('success', [App\Http\Controllers\OrderController::class, 'success']);
+Route::get('error', [App\Http\Controllers\OrderController::class, 'error']);
 Route::post('/payment/status', [App\Http\Controllers\PaymentController::class, 'status']);
 Auth::routes(['verify'=> true]);
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Omnipay\Omnipay;
 use App\Enums\PaymentStatus;
 use App\Models\Order;
 use App\Models\Payment;
@@ -14,12 +14,12 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\PaypalController;
-use Omnipay\Omnipay;
+
+
+
 class OrderController extends Controller
 {
     private Transfers24 $transfers24;
@@ -27,9 +27,7 @@ class OrderController extends Controller
     public function __construct(Transfers24 $transfers24)
     {
         $this->transfers24 = $transfers24;
-
-
-        $this->gateway = Omnipay::create('Paypal_Rest');
+        $this->gateway = Omnipay::create('PayPal_Rest');
         $this->gateway->setClientId(env('PAYPAL_CLIENT_ID'));
         $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
         $this->gateway->setTestMode(true);
@@ -65,7 +63,7 @@ class OrderController extends Controller
 
             }else if ($method == 3){
             
-                return $this->PaypalTrnsaction();
+                return $this->PaypalTrnsaction($order);
             }else{
 
             }
@@ -114,7 +112,7 @@ class OrderController extends Controller
 
                 $arr = $response->getData();
 
-                $payment = new PaymentPaypal;
+                $payment = new PaymentPaypal();
                 $payment->payment_id = $arr['id'];
                 $payment->payer_id = $arr['payer']['payer_info']['payer_id'];
                 $payment->payer_email = $arr['payer']['payer_info']['email'];
@@ -124,6 +122,7 @@ class OrderController extends Controller
 
                 $payment->save();
 
+                Session::put('cart', new Cart());
                 return redirect()->route('orders.index');
 
             }

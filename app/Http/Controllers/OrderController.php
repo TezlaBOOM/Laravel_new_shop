@@ -60,7 +60,7 @@ class OrderController extends Controller
                 
                 return $this->paymentTransaction($order);
             }else if ($method == 2){
-
+                return $this->checkout();
             }else if ($method == 3){
             
                 return $this->PaypalTrnsaction($order);
@@ -141,6 +141,36 @@ class OrderController extends Controller
     }
 
 
+    public function checkout()
+    {
+        \Stripe\Stripe::setApiKey(config('stripe.sk'));
+
+        $order = new Order();
+        $cart = Session::get('cart',new Cart());
+
+        $session = \Stripe\Checkout\Session::create([
+            'line_items'=>[
+                [
+                    'price_date'=>[
+                        'currency'=>'PLN',
+                        'product_date'=>[
+                            'name'=>'Sennd me money',
+                        ],
+                        'unit_amount'=>($cart->getSum())*100,
+                    ],
+                    'quantity'=>1,
+                ],
+            ],
+            'mode'=>'payment',
+            'success_url'=>route('acceptStripe'),
+           
+        ]);
+        return redirect()->away($session->url);
+    }
+    public function acceptStripe()
+    {
+        return view('index');
+    }
 
 
 

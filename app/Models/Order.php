@@ -20,7 +20,8 @@ class Order extends Model
     protected $fillable = [
         'quantity',
         'price',
-        'user_id'
+        'user_id',
+        'payment_category_id'
     ];
 
     public function user(): BelongsTo
@@ -30,6 +31,10 @@ class Order extends Model
     public function payment(): HasOne
     {
         return $this->hasOne(Payment::class);
+    }
+    public function payment_category(): HasOne
+    {
+        return $this->hasOne(payment_category::class);
     }
 
 

@@ -151,9 +151,9 @@ class OrderController extends Controller
         $session = \Stripe\Checkout\Session::create([
             'line_items'=>[
                 [
-                    'price_date'=>[
+                    'price_data'=>[
                         'currency'=>'PLN',
-                        'product_date'=>[
+                        'product_data'=>[
                             'name'=>'Sennd me money',
                         ],
                         'unit_amount'=>($cart->getSum())*100,
@@ -162,7 +162,7 @@ class OrderController extends Controller
                 ],
             ],
             'mode'=>'payment',
-            'success_url'=>route('acceptStripe'),
+            'success_url'=>route('Succes.Stripe'),
            
         ]);
         return redirect()->away($session->url);

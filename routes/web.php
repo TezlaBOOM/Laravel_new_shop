@@ -37,7 +37,7 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/{product}', [App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
+    Route::get('/cart/{product}', [App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
     Route::delete('/cart/{product}',[App\Http\Controllers\CartController::class,'destroy'])->name('cart.destroy');
 
     Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
@@ -50,7 +50,7 @@ Route::middleware(['auth','verified'])->group(function(){
 
    
 });
-Route::post('acceptStripe', [App\Http\Controllers\OrderController::class, 'successStripe']);
+Route::get('access', [App\Http\Controllers\OrderController::class, 'successStripe'])->name('Succes.Stripe');
 Route::get('success', [App\Http\Controllers\OrderController::class, 'success']);
 Route::get('error', [App\Http\Controllers\OrderController::class, 'error']);
 Route::post('/payment/status', [App\Http\Controllers\PaymentController::class, 'status']);

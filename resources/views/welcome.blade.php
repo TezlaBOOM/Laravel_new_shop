@@ -66,7 +66,7 @@
                     <div class="row sorting mb-5 mt-5 dropdown float-right">
                       <div class="col-12">
                         <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
-                        <a class="btn btn-light ">
+                        <a href=#top class="btn btn-light ">
                           <i class="fas fa-arrow-up mr-2"></i> Back to top</a>
                           </div>
                         <div>

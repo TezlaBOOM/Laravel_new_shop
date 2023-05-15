@@ -32,10 +32,10 @@
       <tr>
         <th scope="row">{{$product->id}}</th>
         <td>{{$product->name}}</td>
-        <td>{{$product->description}}</td>
+        <td style="white-space:break-word; width: 20%;">{{$product->description}}</td>
         <td>{{$product->amount}}</td>
         <td>{{$product->price}}</td>
-        <td>@if(!is_null($product->category)) {{$product->category->name}} @endif</td>
+        <td> @if (!is_null($product->category)){{$product->category->name}}@endif</td>
         <td>
         <a href="{{route('products.show', $product->id)}}">
             <button class="btn btn-primary btn-sm" ><i class="fa-solid fa-camera"></i></button>

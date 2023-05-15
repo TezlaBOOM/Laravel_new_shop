@@ -56,13 +56,11 @@ class OrderController extends Controller
             });
             $order->products()->attach($productIds);
             $method= $request->input('payment_category');
-            if ($method == 1){
-                
+            if ($method == 1){  
                 return $this->paymentTransaction($order);
             }else if ($method == 2){
                 return $this->checkout();
             }else if ($method == 3){
-            
                 return $this->PaypalTrnsaction($order);
             }else{
 

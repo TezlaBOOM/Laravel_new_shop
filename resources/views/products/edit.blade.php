@@ -72,13 +72,13 @@
                             <label for="category" class="col-md-4 col-form-label text-md-end">{{__('sklep.product.fileds.category')}}</label>
 
                             <div class="col-md-6">
-                                <select id="category" class="form-control @error('category') is-invalid @enderror" name="category_id">
+                            <select id="category" class="form-control @error('category_id') is-invalid @enderror" name="category_id">
                                     <option value="">brak</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id}}" @if(!is_null($product->category && $product->category->id==$category->id))@endif selected> {{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if($product->isSelectedCategory($category->id)) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('category"')
+                                @error('category_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

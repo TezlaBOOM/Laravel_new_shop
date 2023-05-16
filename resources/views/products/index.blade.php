@@ -20,6 +20,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">{{__('sklep.product.fileds.name')}}</th>
+        <th scope="col">SKU</th>
         <th scope="col">{{__('sklep.product.fileds.description')}}</th>
         <th scope="col">{{__('sklep.product.fileds.amount')}}</th>
         <th scope="col">{{__('sklep.product.fileds.price')}}</th>
@@ -32,6 +33,7 @@
       <tr>
         <th scope="row">{{$product->id}}</th>
         <td>{{$product->name}}</td>
+        <td>{{$product->sku}}</td>
         <td style="white-space:break-word; width: 20%;">{{$product->description}}</td>
         <td>{{$product->amount}}</td>
         <td>{{$product->price}}</td>

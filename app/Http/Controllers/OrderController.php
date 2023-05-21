@@ -55,7 +55,7 @@ class OrderController extends Controller
             if ($cart->hasItems()){
                 $order = new Order();
                 $order->quantity = $cart->getQuantity();
-                $order->price = $cart->getSumTotal();
+                $order->price = $cart->getSum();
                 $order->user_id = Auth::id();                
                 $order->payment_categories_id = $request->input('paymentcategory_id');                
                 $order->save();

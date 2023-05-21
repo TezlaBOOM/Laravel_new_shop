@@ -85,7 +85,7 @@
                         <div class="form-group row mb-0 float-right">
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('shop.button.save') }}
+                                   Zapisz
                                 </button>
                             </div>
                         </div>

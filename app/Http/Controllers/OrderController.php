@@ -5,6 +5,7 @@ use Omnipay\Omnipay;
 use App\Enums\PaymentStatus;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\PaymentStripe;
 use App\Models\PaymentPaypal;
 use App\ValueObjects\Cart;
 use Devpark\Transfers24\Exceptions\RequestException;
@@ -38,6 +39,7 @@ class OrderController extends Controller
         return view("orders.index", [
             'orders' => Order::where('user_id', Auth::id())->paginate(10),
             'paypal' => PaymentPaypal::where ('user_id' , Auth::id())->paginate(10),
+            'stripe' => PaymentStripe::where ('user_id' , Auth::id())->paginate(10),
            
         ]);
     }
@@ -69,7 +71,7 @@ class OrderController extends Controller
           }
           if ($Change == 2){
 
-              return $this->paymentStripe();
+              return $this->PaymentStripe();
 
           } if ($Change == 3){
 
@@ -157,7 +159,7 @@ class OrderController extends Controller
     }
 
 
-    public function checkout()
+    public function PaymentStripe()
     {
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
@@ -183,9 +185,28 @@ class OrderController extends Controller
         ]);
         return redirect()->away($session->url);
     }
-    public function acceptStripe()
+    public function successStripe()
     {
-        return view('index');
+
+      $cart = Session::get('cart', new Cart()); 
+    $productIds = $cart->getItems()->map(function($item){
+        return['product_id'=>$item->getProductId()];
+    });
+
+
+    $payment = new PaymentStripe();
+    $payment-> user_id = Auth::id();
+    $payment->quantity =  $cart->getQuantity();
+    $payment->amount = $cart->getSum();
+    $payment->currency = 'PLN';
+    $payment->payment_status = 'Approved';
+
+    $payment->save(); 
+
+    $payment->product()->attach($productIds); 
+
+    Session::put('cart', new Cart());
+    return redirect()->route('orders.index');
     }
 
 

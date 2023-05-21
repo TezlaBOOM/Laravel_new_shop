@@ -7,6 +7,7 @@
                   <div class="container-fluid">
                     <div class="row   mb-5">
                       <div class="col-12">
+                      @csrf
                         <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
                           <label class="mr-2">Sort by:</label>
                           <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance<span class="caret"></span></a>
@@ -56,7 +57,7 @@
                               <i>PLN {{$product->price}}</i>
                             </h5>
                           </div>
-                          <button class="btn btn-success btn-sm add-cart-button" data-id="{{$product->id}}" @guest disabled @endguest>
+                          <button type="button" class="btn btn-success btn-sm add-cart-button" data-id="{{$product->id}}" @guest disabled @endguest>
                             <i class="fas fa-cart-plus"></i> Dodaj do koszyka 
                           </button>
                         </div>

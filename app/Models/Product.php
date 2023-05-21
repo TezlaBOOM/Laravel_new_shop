@@ -40,4 +40,8 @@ class Product extends Model
     {
         return !is_null($this->category);
     }
+    public function paypals()
+    {
+        return $this->belongsToMany(PaymentPaypal::class);
+    }
 }

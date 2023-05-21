@@ -17,6 +17,21 @@ window.$.ajaxSetup({
    }
 });
 
+try {
+    window.Popper = require('popper.js').default;
+    window.Swal = require('sweetalert2');
+    window.$ = window.jQuery = require('jquery');
+    window.$.ajaxSetup({
+       headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       }
+    });
+
+    require('bootstrap');
+} catch (e) {}
+
+
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

@@ -59,7 +59,7 @@ $(function() {
                     '                        <i>PLN ' + product.price + '</i>' +
                     '                    </h5>' +
                     '                </div>' +
-                    '                <button class="btn btn-success btn-sm add-cart-button"' + ' data-id="' + product.id + '">' +
+                    '                <button type="button" name="add_cart_button" class="btn btn-success btn-sm add-cart-button"' + ' data-id="' + product.id + '">' +
                     '                   <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
                     '                </button>' +
                     '            </div>' +
@@ -67,6 +67,7 @@ $(function() {
                 $('div#products-wrapper').append(html);
             });
         });
+        
     }
 
     function getImage(product) {

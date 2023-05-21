@@ -36,39 +36,51 @@ class OrderController extends Controller
     public function index(): View
     {
         return view("orders.index", [
-            'orders' => Order::where('user_id', Auth::id())->paginate(10)
+            'orders' => Order::where('user_id', Auth::id())->paginate(10),
+            'paypal' => PaymentPaypal::where ('user_id' , Auth::id())->paginate(10),
            
         ]);
     }
 
     public function store( Request $request)
     {
-        $cart = Session::get('cart', new Cart());
-        if ($cart->hasItems()) {
-            $order = new Order();
-            $order->quantity = $cart->getQuantity();
-            $order->price = $cart->getSum();
-            $order->user_id = Auth::id();
-            $order->payment_categories_id= $request->input('payment_category');
-            $order->save();
-            $productIds = $cart->getItems()->map(function ($item) {
-                return ['product_id' => $item->getProductId()];
-            });
+      
+        $cart = Session::get('cart', new Cart());           
+           
+        $Change = $request->input('payment_category');
+          if ($Change == 1){
+
+            if ($cart->hasItems()){
+                $order = new Order();
+                $order->quantity = $cart->getQuantity();
+                $order->price = $cart->getSumTotal();
+                $order->user_id = Auth::id();                
+                $order->payment_categories_id = $request->input('paymentcategory_id');                
+                $order->save();
+                $productIds = $cart->getItems()->map(function($item){    
+                return['product_id'=>$item->getProductId()];    
+            });               
             $order->products()->attach($productIds);
-            $method= $request->input('payment_category');
-            if ($method == 1){  
-                return $this->paymentTransaction($order);
-            }else if ($method == 2){
-                return $this->checkout();
-            }else if ($method == 3){
-                return $this->PaypalTrnsaction($order);
-            }else{
+          
+              return $this->paymentTransaction($order);
+          
+            }else 
+            {}
+          }
+          if ($Change == 2){
 
-            }
+              return $this->paymentStripe();
 
-        }
-        return back();
-    }
+          } if ($Change == 3){
+
+              return $this->PaypalTrnsaction();
+          }           
+
+          return back();
+
+        }       
+       
+    
 
 
 
@@ -105,20 +117,26 @@ class OrderController extends Controller
             ));
 
             $response = $transaction->send();
-
+               
             if ($response->isSuccessful()) {
-
+                $cart = Session::get('cart',new Cart());
+                $productIds = $cart->getItems()->map(function($item){
+                    return['product_id'=>$item->getProductId()];
+                });
                 $arr = $response->getData();
-
                 $payment = new PaymentPaypal();
                 $payment->payment_id = $arr['id'];
+                $payment-> user_id = Auth::id();
+                $payment->quantity =  $cart->getQuantity();
                 $payment->payer_id = $arr['payer']['payer_info']['payer_id'];
                 $payment->payer_email = $arr['payer']['payer_info']['email'];
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
-
+    
                 $payment->save();
+    
+                $payment->product()->attach($productIds);
 
                 Session::put('cart', new Cart());
                 return redirect()->route('orders.index');

@@ -22,19 +22,36 @@
             <tbody>
             @foreach($orders as $order)
                 <tr>
-                    <th scope="row">{{ $order->id }}</th>
-                    <th scope="row">{{ $order->quantity }}</th>
-                    <th scope="row">{{ $order->price }}</th>
-                    <th scope="row">{{ $order->payment->status }}</th>
-                    <th scope="row">
-                    @foreach($order->products as $product)
-                            <ul> 
-                                <li>{{ $product->name }} - {{ $product->description }}</li>
-                           </ul>
-                        @endforeach
-                    </th>
+                    <td scope="row">{{ $order->id }}</td>
+                    <td scope="row">{{ $order->quantity }}</td>
+                    <td scope="row">{{ $order->price }} PLN</td>
+                    <td scope="row">{{ $order->payment->status }}</td>
+                    <td scope="row">
+                        @foreach($order->products as $product)
+                            <ul>
+                                <li>{{ $product->name }} - {{$product->description}}</li>
+                            </ul>
+                        @endforeach 
+                    </td> 
+                    <td></td>
                 </tr>
             @endforeach
+    @foreach($paypal as $paypals)
+                    <tr>
+                        <td scope="row">{{ $paypals->id }}</td>
+                        <td scope="row">{{ $paypals->quantity }}</td>
+                        <td scope="row">{{ $paypals->amount }} PLN</td>
+                        <td scope="row">{{ $paypals->payment_status }}</td>
+                        <td scope="row">
+                            @foreach($paypals->product as $products)
+                                <ul>
+                                    <li>{{ $products->name }} - {{$products->description}}</li>
+                                </ul>
+                            @endforeach 
+                        </td> 
+                        <td></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         {{ $orders->links() }}

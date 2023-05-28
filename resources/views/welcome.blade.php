@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@vite(['resources/js/welcome.js']);
+@vite(['resources/js/welcome.js'])
 @section('content')
 <div class="container pt-5">
               <div class="row">

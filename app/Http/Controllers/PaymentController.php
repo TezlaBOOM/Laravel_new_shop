@@ -32,23 +32,19 @@ class PaymentController extends Controller
      */
     public function status(Request $request)
     {
-        
-        $response =  $this->transfers24->receive($request);
-        $payment = Payment::where('session_id',$response->getSessionId())->firstOrFail();
+        $response = $this->transfers24->receive($request);
+        $payment = Payment::where('session_id', $response->getSessionId())->firstOrFail();
 
-
-        if ($response->isSuccess()) {
-            
-           $payment->status = PaymentStatus::Succes;
-        }else{
-            $payment->status=   PaymentStatus::FAIL;             
-            $payment->error_code = $response ->getErrorCode();
-            $payment->error_description =json_encode( $response ->getErrorDescription());
+        if (!is_null($payment)) {
+            if ($response->isSuccess()) {
+                $payment->status = PaymentStatus::SUCCESS;
+            } else {
+                $payment->status = PaymentStatus::FAIL;
+                $payment->error_code = $response->getErrorCode();
+                $payment->error_description = json_encode($response->getErrorDescription());
+            }
             $payment->save();
         }
-       
-
-       
-    }  
+    }
    
 }
